@@ -1,4 +1,4 @@
-![atheneum-header](https://github.com/user-attachments/assets/f27638c0-29bc-4268-bdb2-5222f29b6047)
+![atheneum-header-transparency](https://github.com/user-attachments/assets/b6c48bf1-6d7b-4c2e-b426-445eed3fb6c4)
 
 # Atheneum for After Effects
 
