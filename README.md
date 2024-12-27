@@ -1,3 +1,5 @@
+![atheneum-header](https://github.com/user-attachments/assets/f27638c0-29bc-4268-bdb2-5222f29b6047)
+
 # Atheneum for After Effects
 
 A 3rd-party script library and launcher for After Effects.
