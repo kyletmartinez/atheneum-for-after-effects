@@ -1,4 +1,5 @@
-![atheneum-header-transparency](https://github.com/user-attachments/assets/b6c48bf1-6d7b-4c2e-b426-445eed3fb6c4)
+![atheneum-header-transparency-dm](https://github.com/user-attachments/assets/bfebac1e-70cb-4b37-809f-edc0c9bb3758#gh-dark-mode-only)
+![atheneum-header-transparency-lm](https://github.com/user-attachments/assets/7cde3a73-3572-435d-b45d-7ec598fe7469#gh-light-mode-only)
 
 # Atheneum for After Effects
 
