@@ -335,10 +335,9 @@
         var numFolders = folders.length;
         for (var i = 0; i < numFolders; i++) {
             var folder = folders[i];
-            with (listbox.add("item", i + 1)) {
-                subItems[0].text = folder.name;
-                subItems[1].text = folder.path;
-            }
+            var item = listbox.add("item", i + 1);
+            item.subItems[0].text = folder.name;
+            item.subItems[1].text = folder.path;
         }
     }
 
