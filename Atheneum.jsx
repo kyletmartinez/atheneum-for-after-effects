@@ -382,6 +382,11 @@
             }
         };
 
+        var reloadFoldersButton = folderButtons.add("button", undefined, "Reload All Folders");
+        reloadFoldersButton.onClick = function() {
+            reloadFiles(scriptListbox);
+        };
+
         /* TAB TWO ********************************************************************************/
 
         var tabTwo = tabs.add("group");
