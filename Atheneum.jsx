@@ -459,11 +459,7 @@
         windowButtons.add("statictext", undefined, Tool.NAME + " v" + Tool.VERSION);
         windowButtons.add("button", undefined, "OK", {name: "ok"});
 
-        try {
-            win.show();
-        } catch (err) {
-            alert(err.line);
-        }
+        win.show();
     }
 
     /**********************************************************************************************
