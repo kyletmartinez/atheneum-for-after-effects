@@ -372,11 +372,13 @@
         var removeFolderButton = folderButtons.add("button", undefined, "Remove Folder");
         removeFolderButton.onClick = function() {
             if (folderListbox.selection !== null) {
-                if (confirm("Are you sure you don't want to load script files in this folder?")) {
+                if (confirm(Tool.NAME + "\nAre you sure you want to remove this folder?")) {
                     removeFolder(scriptListbox.folders, folderListbox.selection.index);
                     populateFolderList(scriptListbox.folders, folderListbox);
                     reloadFiles(scriptListbox);
                 }
+            } else {
+                alert(Tool.NAME + "\nSelect the folder you would like to remove.");
             }
         };
 
@@ -412,7 +414,7 @@
 
         var resetFavoritesButton = favoritesButtons.add("button", undefined, "Reset Favorites");
         resetFavoritesButton.onClick = function() {
-            if (confirm("Are you sure you want to remove all usage history?")) {
+            if (confirm(Tool.NAME + "\nAre you sure you want to remove all use history?")) {
                 setUserDataFile("favorites.json", {});
                 scriptListbox.favorites = getUserDataFile("favorites.json");
                 populateFileList(scriptListbox, "");
