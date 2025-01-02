@@ -1,3 +1,6 @@
+![atheneum-header-transparency-dm](https://github.com/user-attachments/assets/bfebac1e-70cb-4b37-809f-edc0c9bb3758#gh-dark-mode-only)
+![atheneum-header-transparency-lm](https://github.com/user-attachments/assets/7cde3a73-3572-435d-b45d-7ec598fe7469#gh-light-mode-only)
+
 # Atheneum for After Effects
 
 A 3rd-party script library and launcher for After Effects.
@@ -5,7 +8,7 @@ A 3rd-party script library and launcher for After Effects.
 > [!IMPORTANT]
 > *On first launch the script list will be empty. Open the Atheneum Settings window by clicking the **S** button and then click **Add Folder** to load your scripts.*
 
-## USING ATHENEUM
+## Using Atheneum
 
 Double click a script within the list to run the script. Atheneum works best with workflow scripts that require no user interface but supports any `JSX` or `JSXBIN` file.
 
@@ -15,7 +18,7 @@ Click the **X** button to clear the search bar and reset the list of scripts.
 
 Click the **S** button to open the Atheneum Settings window. From here you can customize your Atheneum install and behavior.
 
-## ATHENEUM SETTINGS - FOLDERS
+## Atheneum Settings - Folders
 
 Atheneum will load all scripts from any folders listed in the settings.
 
@@ -30,7 +33,7 @@ Atheneum will load all scripts from any folders listed in the settings.
 
 * Select a folder from the folder list and and click **Remove Folder** to no longer load script files from that folder.
 
-## ATHENEUM SETTINGS - FAVORITES
+## Atheneum Settings - Favorites
 
 When using Atheneum the most frequently-used scripts will automatically be pushed to the top of the list and marked with an emoji of your choice. Atheneum is always recording usage and will live update as you use it.
         
