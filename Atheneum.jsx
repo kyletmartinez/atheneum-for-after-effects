@@ -224,7 +224,9 @@
         for (var i = 0; i < numFolders; i++) {
             var path = folders[i].path;
             var folder = new Folder(path);
-            getAllScriptFiles(folder, files);
+            if (folder.exists === true) {
+                getAllScriptFiles(folder, files);
+            }
         }
         return files;
     }
