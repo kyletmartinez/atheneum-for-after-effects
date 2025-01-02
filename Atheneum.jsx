@@ -1,3 +1,5 @@
+/* global $, app, Folder, Panel, system, */
+
 /**
  * @name Atheneum
  * @version 1.0.1
