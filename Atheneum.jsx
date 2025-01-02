@@ -292,6 +292,20 @@
     /**********************************************************************************************/
 
     /**
+     * Run the selected script file.
+     * @param {Listbox} listbox - current listbox
+     */
+    function runScriptFile(listbox, filter) {
+        var file = new File(listbox.selection.filePath);
+        if (file.exists === true) {
+            $.evalFile(file);
+            setFavoriteCount(listbox.favorites, listbox.selection.fileName);
+            listbox.favorites = getUserDataFile("favorites.json");
+            populateFileList(listbox, filter);
+        }
+    }
+
+    /**
      * Load all folders, favorites, and files.
      * @param {Listbox} listbox - current listbox
      */
@@ -517,10 +531,7 @@
         var listbox = win.add("listbox");
         listbox.alignment = ["fill", "fill"];
         listbox.onDoubleClick = function() {
-            $.evalFile(File(listbox.selection.filePath));
-            setFavoriteCount(listbox.favorites, listbox.selection.fileName);
-            listbox.favorites = getUserDataFile("favorites.json");
-            populateFileList(listbox, searchText.text);
+            runScriptFile(listbox, searchText.text);
         };
 
         reloadFiles(listbox);
