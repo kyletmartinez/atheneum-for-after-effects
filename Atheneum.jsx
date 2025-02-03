@@ -1,8 +1,6 @@
-/* global $, app, Folder, Panel, system, */
-
 /**
  * @name Atheneum
- * @version 1.0.1
+ * @version 1.0.2
  * @author Kyle Martinez <www.kyle-martinez.com>
  *
  * @description A 3rd-party script library and launcher for After Effects.
@@ -11,17 +9,15 @@
  * no event shall the author be held liable for any damages arising in any way from the use of this
  * script.
  *
- * In other words, I'm just trying to help make life as an animator easier
- * "A rising tide lifts all boats." - John F. Kennedy, 1963
+ * I'm just trying to help make life as an After Effects animator a little easier.
  */
 
 (function Atheneum(thisObj) {
 
-    var Tool = {"NAME": "Atheneum", "VERSION": "1.0.1"};
-
-    /**********************************************************************************************
-     * GET/SET AFTER EFFECTS SETTINGS *************************************************************
-     **********************************************************************************************/
+    var Tool = {
+        "NAME": "Atheneum",
+        "VERSION": "1.0.2"
+    };
 
     /**
      * Get a setting from the After Effects preferences file.
@@ -47,19 +43,15 @@
         app.preferences.saveToDisk();
     }
 
-    /**********************************************************************************************
-     * GET/SET USER DATA **************************************************************************
-     **********************************************************************************************/
-
     /**
      * Reveal the user data folder.
      */
     function revealUserDataFolder() {
         var folder = new Folder(Folder.userData.fsName + "/" + Tool.NAME);
         if (folder.exists === true) {
-            var cmd = 'explorer.exe "' + folder.fsName + '"';
+            var cmd = "explorer.exe \"" + folder.fsName + "\"";
             if ($.os.toLowerCase().indexOf("mac") !== -1) {
-                cmd = 'open "' + folder.fsName + '"';
+                cmd = "open \"" + folder.fsName + "\"";
             }
             system.callSystem(cmd);
         }
@@ -107,10 +99,6 @@
         file.close();
     }
 
-    /**********************************************************************************************
-     * GET/SET FAVORITES **************************************************************************
-     **********************************************************************************************/
-
     /**
      * Set the number of uses for a script.
      * @param  {Object} favorites  - all favorites
@@ -150,10 +138,6 @@
         return (minimumCount || Infinity);
     }
 
-    /**********************************************************************************************
-     * MERGE SCRIPT FILES *************************************************************************
-     **********************************************************************************************/
-
     /**
      * Merge script files and favorites data into a single sorted object.
      * @param  {Array}  files     - all files
@@ -161,7 +145,10 @@
      * @return {Object}           - all sorted files
      */
     function mergeScriptFiles(files, favorites) {
-        var scriptFiles = {"favorite": [], "standard": []};
+        var scriptFiles = {
+            "favorite": [],
+            "standard": []
+        };
         var minimumCount = getMinimumCount(favorites, 0.25);
         var numFiles = files.length;
         for (var i = 0; i < numFiles; i++) {
@@ -181,10 +168,6 @@
         });
         return scriptFiles;
     }
-
-    /**********************************************************************************************
-     * GET SCRIPT FILES ***************************************************************************
-     **********************************************************************************************/
 
     /**
      * Get all JSX and JSXBIN files from a folder and subfolders.
@@ -230,10 +213,6 @@
         }
         return files;
     }
-
-    /**********************************************************************************************
-     * SET SCRIPT FILES ***************************************************************************
-     **********************************************************************************************/
 
     /**
      * Add a file to the current listbox.
@@ -289,8 +268,6 @@
         addListItems(listbox, scriptFiles.standard, filter);
     }
 
-    /**********************************************************************************************/
-
     /**
      * Run the selected script file.
      * @param {Listbox} listbox - current listbox
@@ -316,17 +293,16 @@
         populateFileList(listbox, "");
     }
 
-    /**********************************************************************************************
-     * SETTINGS USER INTERFACE ********************************************************************
-     **********************************************************************************************/
-
     function removeFolder(folders, folderIndex) {
         folders.splice(folderIndex, 1);
         setUserDataFile("folders.json", folders);
     }
 
     function addFolder(folders, folder) {
-        folders.push({"name": folder.name.replace(/\%20/g," "), "path": folder.fsName});
+        folders.push({
+            "name": folder.name.replace(/\%20/g, " "),
+            "path": folder.fsName
+        });
         setUserDataFile("folders.json", folders);
     }
 
@@ -355,16 +331,14 @@
         tabs.alignment = ["fill", "fill"];
         tabs.orientation = "stack";
 
-        /* TAB ONE ********************************************************************************/
-
         var tabOne = tabs.add("group");
         tabOne.alignment = ["fill", "fill"];
         tabOne.orientation = "column";
 
         var folderListbox = tabOne.add("listbox", undefined, "", {
-            numberOfColumns: 3,
-            showHeaders: true,
-            columnTitles: ["", "Folder Name", "File Path"]
+            "numberOfColumns": 3,
+            "showHeaders": true,
+            "columnTitles": ["", "Folder Name", "File Path"]
         });
         folderListbox.alignment = ["fill", "top"];
         folderListbox.minimumSize.height = 200;
@@ -404,8 +378,6 @@
             reloadFiles(scriptListbox);
         };
 
-        /* TAB TWO ********************************************************************************/
-
         var tabTwo = tabs.add("group");
         tabTwo.alignment = ["fill", "fill"];
         tabTwo.orientation = "column";
@@ -416,7 +388,7 @@
 
         iconPanel.add("statictext", undefined, "Favorites Icon:");
 
-        var favoritesIconEditText = iconPanel.add('edittext {justify: "center"}');
+        var favoritesIconEditText = iconPanel.add("edittext {justify: \"center\"}");
         favoritesIconEditText.alignment = ["fill", "top"];
         favoritesIconEditText.text = getAfterEffectsSettings("icon", "🎉");
         favoritesIconEditText.onChanging = function() {
@@ -449,11 +421,11 @@
         };
 
         var descriptionText = "When using "  + Tool.NAME + " the most frequently-used scripts will automatically be pushed to the top of the list and marked with an emoji of your choice. "  + Tool.NAME + " is always recording usage and will live update as you use it.";
-        favoritesGroup.add("statictext", undefined, descriptionText, {multiline: true});
+        favoritesGroup.add("statictext", undefined, descriptionText, {
+            "multiline": true
+        });
 
-        /******************************************************************************************/
-
-        function showTab () {
+        function showTab() {
             var selection = categories.selection;
             if (selection !== null) {
                 var numTabs = tabs.children.length;
@@ -466,7 +438,7 @@
 
         categories.onChange = showTab;
 
-        win.onShow = function () {
+        win.onShow = function() {
             categories.selection = 0;
             showTab();
         };
@@ -474,14 +446,12 @@
         var windowButtons = win.add("group");
         windowButtons.alignment = ["right", "fill"];
         windowButtons.add("statictext", undefined, Tool.NAME + " v" + Tool.VERSION);
-        windowButtons.add("button", undefined, "OK", {name: "ok"});
+        windowButtons.add("button", undefined, "OK", {
+            "name": "ok"
+        });
 
         win.show();
     }
-
-    /**********************************************************************************************
-     * PANEL USER INTERFACE ***********************************************************************
-     **********************************************************************************************/
 
     /**
      * Build the UI for this script.
@@ -492,7 +462,9 @@
         if (thisObj instanceof Panel) {
             win = thisObj;
         } else {
-            win = new Window("palette", Tool.Name, undefined, {resizeable: true});
+            win = new Window("palette", Tool.Name, undefined, {
+                "resizeable": true
+            });
         }
 
         win.alignChildren = ["left", "top"];
