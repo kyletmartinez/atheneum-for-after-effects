@@ -1,6 +1,6 @@
 /**
  * @name Atheneum
- * @version 1.0.2
+ * @version 1.0.1
  * @author Kyle Martinez <www.kyle-martinez.com>
  *
  * @description A 3rd-party script library and launcher for After Effects.
@@ -16,7 +16,7 @@
 
     var Tool = {
         "NAME": "Atheneum",
-        "VERSION": "1.0.2"
+        "VERSION": "1.0.1"
     };
 
     /**
