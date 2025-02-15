@@ -29,9 +29,13 @@ Atheneum will load all scripts from any folders listed in the settings.
 > [!TIP]
 > *Atheneum will load all scripts found within the given folder and any subfolders automatically.*
 
-### Remove Folder Button
+#### Remove Folder Button
 
 * Select a folder from the folder list and and click **Remove Folder** to no longer load script files from that folder.
+
+#### Reload All Folders
+
+* Reload all script files from all folders. Helpful if you've added a new script to one of the folders and don't want to close/open Atheneum all the way.
 
 ## Atheneum Settings - Favorites
 
