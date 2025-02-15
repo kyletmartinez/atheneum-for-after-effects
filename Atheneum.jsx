@@ -74,10 +74,10 @@
     /**
      * Get and parse JSON data from a file.
      * @param  {String} fileName - file name
-     * @return {Object}          - file data
+     * @param  {Object|Array}    - file data
+     * @return {Object|Array}    - file data
      */
-    function getUserDataFile(fileName) {
-        var fileData = {};
+    function getUserDataFile(fileName, fileData) {
         var folder = getUserDataFolder();
         var file = new File(folder.fsName + "/" + fileName);
         if (file.exists === true) {
@@ -279,7 +279,7 @@
         if (file.exists === true) {
             $.evalFile(file);
             setFavoriteCount(listbox.favorites, listbox.selection.fileName);
-            listbox.favorites = getUserDataFile("favorites.json");
+            listbox.favorites = getUserDataFile("favorites.json", {});
             populateFileList(listbox, filter);
         }
     }
@@ -289,8 +289,8 @@
      * @param {Listbox} listbox - current listbox
      */
     function reloadFiles(listbox) {
-        listbox.folders = getUserDataFile("folders.json");
-        listbox.favorites = getUserDataFile("favorites.json");
+        listbox.folders = getUserDataFile("folders.json", []);
+        listbox.favorites = getUserDataFile("favorites.json", {});
         listbox.files = getScriptFiles(listbox.folders);
         populateFileList(listbox, "");
     }
@@ -412,7 +412,7 @@
         resetFavoritesButton.onClick = function() {
             if (confirm(Tool.NAME + "\nAre you sure you want to remove all use history?")) {
                 setUserDataFile("favorites.json", {});
-                scriptListbox.favorites = getUserDataFile("favorites.json");
+                scriptListbox.favorites = getUserDataFile("favorites.json", {});
                 populateFileList(scriptListbox, "");
             }
         };
